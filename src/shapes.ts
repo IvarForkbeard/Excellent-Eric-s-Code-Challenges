@@ -14,14 +14,26 @@ abstract class Shape {
 
   draw(c: CanvasRenderingContext2D): void {
     const {
+      color,
       color: { r, g, b },
     } = this;
     c.fillStyle = `rgb(${r},${g},${b})`;
 
+    const area = this.area();
+
     this.drawShape(c);
+
+    c.fillStyle = "black";
+    c.fillText(
+      `Area: ${area.toFixed(4)}, Color: ${JSON.stringify(color)}`,
+      this.pos.x,
+      this.pos.y
+    );
   }
 
   protected abstract drawShape(c: CanvasRenderingContext2D): void;
+
+  protected abstract area(): number;
 }
 
 export class Circle extends Shape {
@@ -38,6 +50,11 @@ export class Circle extends Shape {
     c.arc(x, y, radius, 0, 2 * Math.PI);
     c.fill();
   }
+  area(): number {
+    const { radius } = this;
+
+    return 2 * Math.PI * radius;
+  }
 }
 
 export class Rectangle extends Shape {
@@ -53,6 +70,14 @@ export class Rectangle extends Shape {
     c.beginPath();
     c.rect(x, y, width, height);
     c.fill();
+  }
+
+  area(): number {
+    const {
+      dimensions: { x: width, y: height },
+    } = this;
+
+    return width * height;
   }
 }
 

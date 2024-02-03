@@ -9,8 +9,8 @@ if (!c) {
 }
 
 const shapes = [
-  new Circle({ x: 100, y: 100 }, purple, 30),
-  new Rectangle({ x: 80, y: 30 }, cyan, { x: 40, y: 20 }),
+  new Circle({ x: 50, y: 100 }, purple, 30),
+  new Rectangle({ x: 80, y: 60 }, cyan, { x: 40, y: 20 }),
   new Square({ x: 0, y: 20 }, indigo, 50),
 ];
 
