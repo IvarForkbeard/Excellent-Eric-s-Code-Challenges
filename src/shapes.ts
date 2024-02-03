@@ -54,7 +54,7 @@ export class Circle extends Shape {
   area(): number {
     const { radius } = this;
 
-    return 2 * Math.PI * radius;
+    return Math.PI * radius ** 2;
   }
 }
 
