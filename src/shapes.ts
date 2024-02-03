@@ -17,12 +17,11 @@ abstract class Shape {
       color,
       color: { r, g, b },
     } = this;
+
     c.fillStyle = `rgb(${r},${g},${b})`;
-
-    const area = this.area();
-
     this.drawShape(c);
 
+    const area = this.area();
     c.fillStyle = "black";
     c.fillText(
       `Area: ${area.toFixed(4)}, Color: ${JSON.stringify(color)}`,
@@ -46,10 +45,12 @@ export class Circle extends Shape {
       pos: { x, y },
       radius,
     } = this;
+
     c.beginPath();
     c.arc(x, y, radius, 0, 2 * Math.PI);
     c.fill();
   }
+
   area(): number {
     const { radius } = this;
 
@@ -67,6 +68,7 @@ export class Rectangle extends Shape {
       pos: { x, y },
       dimensions: { x: width, y: height },
     } = this;
+
     c.beginPath();
     c.rect(x, y, width, height);
     c.fill();
